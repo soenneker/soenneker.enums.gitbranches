@@ -6,7 +6,7 @@ namespace Soenneker.Enums.GitBranches;
 /// An enum for common git repository branch names
 /// </summary>
 [Intellenum<string>]
-public partial class GitBranch
+public sealed partial class GitBranch
 {
     /// <summary> develop </summary>
     public static readonly GitBranch Develop = new("develop");
