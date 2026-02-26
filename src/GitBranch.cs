@@ -1,11 +1,11 @@
-﻿using Intellenum;
+using Soenneker.Gen.EnumValues;
 
 namespace Soenneker.Enums.GitBranches;
 
 /// <summary>
 /// An enum for common git repository branch names
 /// </summary>
-[Intellenum<string>]
+[EnumValue<string>]
 public sealed partial class GitBranch
 {
     /// <summary> develop </summary>
