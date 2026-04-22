@@ -1,10 +1,9 @@
-﻿using Xunit;
 
 namespace Soenneker.Enums.GitBranches.Tests;
 
 public sealed class GitBranchTests
 {
-    [Fact]
+    [Test]
     public void Default()
     {
 
