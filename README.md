@@ -5,7 +5,7 @@
 
 # Soenneker.Enums.GitBranches
 
-An enum for common git repository branch names.
+A string-backed enum-value type for the conventional `develop`, `staging`, and `main` Git branch names.
 
 ## Install
 
@@ -13,6 +13,26 @@ An enum for common git repository branch names.
 dotnet add package Soenneker.Enums.GitBranches
 ```
 
-## What you get
+## Usage
 
-- `GitBranch` — An enum for common git repository branch names.
+```csharp
+using Soenneker.Enums.GitBranches;
+
+GitBranch branch = GitBranch.Main;
+string branchName = branch.Value; // "main"
+
+if (GitBranch.TryFromValue(input, out GitBranch? parsed))
+{
+    // parsed is one of the shared static instances
+}
+```
+
+Available values:
+
+- `Develop` → `"develop"`
+- `Staging` → `"staging"`
+- `Main` → `"main"`
+
+`System.Text.Json` serializes the type as the lowercase branch name. `FromValue` throws for unknown input; use `TryFromValue` when parsing configuration or webhook payloads. `FromName` and `TryFromName` use the C# member names, such as `"Main"`.
+
+The values are short branch names, not full refs such as `refs/heads/main`. This package does not inspect a repository, determine its default branch, validate that a branch exists, or run Git commands. Repositories with other branch conventions should keep using their actual string names rather than forcing them into this closed set.
